@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="vzConnectApp">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>{{ appName }} - {{ sectionTitle }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/ico" href="favicon.ico"/>
+<link rel="stylesheet" href="assets/css/libs/bootstrap.min.css" type="text/css">
+
+<link rel="stylesheet" href="assets/css/common.css" type="text/css">
+<!--<link rel="stylesheet" ng-href="assets/css/{{ sectionTitle | lowercase }}.css" type="text/css">-->
+<link rel="stylesheet" href="assets/css/profile.css" type="text/css">
+<link rel="stylesheet" href="assets/css/apps.css" type="text/css">
+<link rel="stylesheet" href="assets/css/payments.css" type="text/css">
+<link rel="stylesheet" href="assets/css/settings.css" type="text/css">
+<link rel="stylesheet" href="assets/css/permission.css" type="text/css">
+<link rel="stylesheet" href="assets/css/login.css" type="text/css">
+</head>
+
+<body>
+
+  contact
+
+<header class="navbar">
+  <div class="container">
+    <div class="default" ng-hide="menuSettings">
+      <img src="assets/img/verizon_logo.png" class="verizon-logo">
+    </div>
+
+    <div class="main" ng-show="menuSettings">
+      <button type="button" class="navbar-toggle nav-mobile">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a href="/uid-fe/"><img src="assets/img/verizon_logo.png" class="verizon-logo"></a>
+      <p class="top-universal-id">{{ appName }}</p>
+
+      <nav class="collapse navbar-collapse" ng-controller="navController">
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-repeat="nav in topNav" ng-mouseover="hoverIn(nav)" ng-mouseleave="hoverOut()" ng-click="goLink(nav)">
+            <a>
+              <div class="nav_{{ nav | lowercase }}" ng-class="{ active : isHover(nav) }">
+                <span class="text hidden">{{ nav }}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="bodyShadow"></div>
+
+      <div id="canvasMenu" ng-controller="navController">
+        <ul>
+          <li ng-repeat="nav in topNav">
+            <a class="nav-mobile" href="" link="#{{ nav | lowercase }}">{{ nav }}</a>
+          </li>
+        </ul>
+      </div>
+  </div> <!-- end .container -->
+</header>
+
+<div ng-view></div>
+
+<footer class="navbar" ng-controller="footerController">
+  <div class="container">
+    <span>{{ footerText }}</span>
+  </div>
+</footer>
+
+<script src="assets/js/libs/jquery-1.11.1.min.js"></script>
+<script src="assets/js/libs/bootstrap.min.js"></script>
+<script src="assets/js/libs/angular-1.2.26.min.js"></script>
+<script src="assets/js/libs/angular-route.min.js"></script>
+<script src="assets/js/libs/angular-animate.min.js"></script>
+<script src="app/app.module.js"></script>
+<script src="app/app.service.js"></script>
+<script src="app/shared/directives.js"></script>
+<script src="app/shared/controllers.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="app/components/profile/profileController.js"></script>
+<script src="app/components/apps/appsController.js"></script>
+<script src="app/components/payments/paymentsController.js"></script>
+<script src="app/components/settings/settingsController.js"></script>
+<script src="app/components/permission/permissionController.js"></script>
+<script src="app/components/login/loginController.js"></script>
+
+</body>
+</html>
